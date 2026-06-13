@@ -1,0 +1,71 @@
+.env
+server/.env
+terraform/envs/*/terraform.tfvars
+terraform/envs/*/.terraform/
+*.tfstate
+*.tfstate.*
+tfplan
+*.tfplan
+crash.log
+crash.*.log
+backups/*
+!backups/postgres/
+!backups/postgres/.gitkeep
+server/haproxy/certs/*
+!server/haproxy/certs/.gitkeep
+workspaces/*
+!workspaces/.gitkeep
+**/node_modules
+**/.next
+**/dist
+**/build
+
+# Java / Spring Boot
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+logs/
+spring.log
+hs_err_pid*
+
+# Build directories
+/target/
+/.gradle/
+/out/
+build/
+
+# Maven
+/.mvn/
+mvnw
+mvnw.cmd
+dependency-reduced-pom.xml
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Gradle wrapper
+gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDEs and editors
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# Spring Boot dev tools
+spring-boot-devtools.jar
+*.springloaded

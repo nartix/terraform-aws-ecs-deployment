@@ -1,0 +1,50 @@
+name       = "edgeforge"
+aws_region = "us-east-2"
+
+cloudflare_account_id = "00000000000000000000000000000000"
+
+haproxy_image = "155097172472.dkr.ecr.us-east-2.amazonaws.com/edgeforge-haproxy:latest"
+
+# Default maximum DNS-discovered task slots per HAProxy backend.
+haproxy_backend_slots = 20
+
+apps = {
+  api = {
+    image = "155097172472.dkr.ecr.us-east-2.amazonaws.com/edgeforge-api:latest"
+    port  = 8080
+
+    hostnames = [
+      {
+        hostname = "api.example.com"
+        zone_id  = "00000000000000000000000000000000"
+      },
+      {
+        hostname = "api.otherdomain.com"
+        zone_id  = "11111111111111111111111111111111"
+      }
+    ]
+  }
+
+  dashboard = {
+    image             = "155097172472.dkr.ecr.us-east-2.amazonaws.com/edgeforge-dashboard:latest"
+    port              = 3000
+    desired_count     = 2
+    backend_slots     = 4
+    health_check_path = "/health"
+
+    hostnames = [
+      {
+        hostname = "dashboard.example.com"
+        zone_id  = "00000000000000000000000000000000"
+      }
+    ]
+  }
+}
+
+tags = {
+  Environment = "prod"
+  Owner       = "edgeforge"
+}
+
+# For production, narrow this once the app's dependencies are known.
+app_egress_cidr_blocks = ["0.0.0.0/0"]

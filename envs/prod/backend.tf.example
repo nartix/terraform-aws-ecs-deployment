@@ -1,0 +1,9 @@
+terraform {
+  backend "s3" {
+    bucket         = "replace-me-terraform-state"
+    key            = "edgeforge/prod.tfstate"
+    region         = "us-east-2"
+    dynamodb_table = "replace-me-terraform-locks"
+    encrypt        = true
+  }
+}
